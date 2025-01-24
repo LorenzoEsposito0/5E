@@ -1,0 +1,46 @@
+/* Stile del link per farlo sembrare un bottone */
+.button {
+    display: inline-block;
+    padding: 8px 10px; /* Aggiunge spazio attorno al testo */
+    font-size: 16px; /* Imposta la dimensione del testo */
+    text-align: center;
+    text-decoration: none; /* Rimuove la sottolineatura */
+    background-color: #4CAF50; /* Colore di sfondo verde */
+    color: white; /* Colore del testo bianco */
+    border: 2px solid #4CAF50; /* Bordo verde */
+    border-radius: 5px; /* Angoli arrotondati */
+    height: 20%;
+    transition: background-color 0.3s, border-color 0.3s; /* Effetto di transizione al passaggio del mouse */
+}
+
+.button:hover {
+    background-color: #45a049; /* Colore di sfondo quando si passa sopra con il mouse */
+    border-color: #45a049; /* Colore del bordo quando si passa sopra con il mouse */
+}
+
+nav {
+    background-color: chartreuse;
+    width: 99%; /* Assicura che la navbar occupi tutta la larghezza */
+    height: 100px; /* Imposta un'altezza maggiore */
+    display: flex;
+    justify-content: center; /* Centra i link nella navbar */
+    align-items: center; /* Allinea verticalmente al centro */
+    gap: 40px; /* Aumenta lo spazio tra i link */
+    padding: 10px; /* Aggiungi padding interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiungi un'ombra per stile */
+    border-radius: 10px; /* Arrotonda i bordi (opzionale) */
+}
+
+nav a {
+    font-size: 18px; /* Ingrandisci il testo */
+    text-decoration: none; /* Rimuovi la sottolineatura */
+    color: black; /* Colore del testo */
+    padding: 10px 20px; /* Spaziatura interna per i link */
+    border-radius: 5px; /* Arrotonda i bordi dei link */
+    transition: background-color 0.3s ease; /* Aggiunge un'animazione al passaggio */
+}
+
+nav a:hover {
+    background-color: limegreen; /* Cambia il colore al passaggio del mouse */
+    color: white; /* Cambia il colore del testo */
+}
