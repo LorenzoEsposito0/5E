@@ -1,0 +1,119 @@
+/* Rimuove i margini predefiniti */
+html, body {
+    margin: 0; /* Elimina lo spazio bianco */
+    padding: 0; /* Rimuove il padding */
+    box-sizing: border-box; /* Gestisce correttamente i margini e i bordi */
+}
+
+/* Stile generale per la navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Sposta il titolo a sinistra e i link a destra */
+    align-items: center; /* Allinea verticalmente gli elementi */
+    background-color: greenyellow; /* Colore di sfondo */
+    padding: 10px 20px; /* Spaziatura interna */
+    width: 100%; /* Copre l'intera larghezza della pagina */
+    box-sizing: border-box; /* Include il padding nella larghezza */
+}
+
+/* Stile per il titolo della navbar */
+.navbar-title {
+    margin: 0; /* Rimuove il margine predefinito */
+    font-size: 24px; /* Dimensione del testo */
+    color: black; /* Colore del testo */
+}
+
+/* Stile per i link della navbar */
+.nav-links {
+    display: flex; /* Usa Flexbox per allineare i link */
+    gap: 10px; /* Spaziatura di almeno 10px tra i link */
+}
+
+/* Stile per ogni link */
+.nav-links a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: black; /* Colore del testo */
+    padding: 10px 15px; /* Spaziatura interna per i link */
+    border-radius: 5px; /* Angoli arrotondati */
+    transition: background-color 0.3s; /* Transizione per l'effetto hover */
+}
+
+/* Effetto hover sui link */
+.nav-links a:hover {
+    background-color: lightgray; /* Colore di sfondo al passaggio del mouse */
+}
+
+form
+{
+    margin-left: 15px;
+}
+
+.text
+{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.upP1 {
+    border: 2px solid black; /* Spessore, tipo e colore del bordo */
+    padding: 5px;           /* Spazio interno tra il testo e il bordo */
+    display: inline-block;  /* Assicura che il bordo si adatti al testo */
+    font-family: Arial, sans-serif; /* Aggiunto un font standard */
+}
+
+.img1
+{
+    width: 300px;
+    height: auto;
+}
+
+.footer {
+    display: flex; /* Usa Flexbox per l'allineamento */
+    justify-content: space-between; /* Sposta gli elementi alle estremità */
+    align-items: center; /* Allinea verticalmente */
+    background-color: greenyellow ; /* Colore di sfondo con !important per priorità */
+    padding: 10px 20px; /* Spaziatura interna */
+    box-sizing: border-box; /* Include il padding nella larghezza */
+    width: 100%; /* Larghezza piena */
+    height: 70px;
+    position: absolute; /* Fissa il footer in fondo alla finestra */
+    bottom: 0; /* Posizionamento in basso */
+    left: 0; /* Allineamento a sinistra */
+    z-index: 10; /* Porta il footer sopra altri elementi */
+    text-align: center; /* Testo centrato */
+}
+
+.footer a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: black; /* Colore del testo */
+    margin-left: 380px; /* Spaziatura tra i link */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Sottolinea al passaggio del mouse */
+}
+
+.footer-links
+{
+    display: flex;
+    gap: 50px;
+}
+
+.body
+{
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+    margin-left: 40%;
+    margin-right: 38%;
+    border: 6px solid black;
+    margin-top: 180px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    box-shadow: 0 0 15px darkorange ;
+}
+
+.text2
+{
+    margin-left:30px;
+    margin-bottom: 30px;
+}
