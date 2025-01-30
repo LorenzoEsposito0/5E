@@ -55,11 +55,23 @@ form
 }
 
 .upP1 {
-    border: 2px solid black; /* Spessore, tipo e colore del bordo */
-    padding: 5px;           /* Spazio interno tra il testo e il bordo */
-    display: inline-block;  /* Assicura che il bordo si adatti al testo */
-    font-family: Arial, sans-serif; /* Aggiunto un font standard */
+    display: flex;
+    gap: 100px; /* Distanza aumentata tra le immagini */
+    padding: 10px;
+    width: 400px; /* Occupa tutta la larghezza */
+    height: auto;
+    margin: auto; /* Centra il contenitore */
 }
+
+.upP1 img {
+    width: 400px; /* Larghezza delle immagini */
+    height: auto; /* Mantiene le proporzioni */
+    border: 2px solid black; /* Bordo per ogni immagine */
+    padding: 5px; /* Spazio interno tra immagine e bordo */
+}
+
+
+
 
 .img1
 {

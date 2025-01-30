@@ -18,10 +18,16 @@ require_once 'header.php'
     <br>
     <br>
     <div class="upP1">
+        <img  src="../Img/DavidGoggins.jpg" alt="foto1">
+        <img  src="../Img/Giannis.jpg" alt="foto2">
+        <img  src="../Img/KobeBryant.jpg" alt="foto3">
     </div>
     <br>
     <br>
-    <img style="height: 350px; width: auto;" src="../Img/libro.jpg" alt="foto1">
+    <div>
+
+    </div>
+
 </div>
 <br>
 
