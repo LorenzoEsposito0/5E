@@ -26,7 +26,7 @@ require_once 'header.php';
         <input type="text" id="autoreLibro" name="autoreLibro" required>
         <br><br>
         <label for="prezzoLibro">Inserisci il prezzo del libro: </label>
-        <input type="number" id="prezzoLibro" name="prezzoLibro" required>
+        <input type="number" id="prezzoLibro" step="0.01" name="prezzoLibro" required>
         <br><br>
         <label for="genereLibro">Inserisci il genere del libro: </label>
         <input type="text" id="genereLibro" name="genereLibro" required>
@@ -49,7 +49,7 @@ require_once 'header.php';
 
         // 2. Connessione al database
         try {
-            $db = new PDO('mysql:host=localhost;dbname=Libreria', 'root', '', [
+            $db = new PDO('mysql:host=localhost;dbname=libreria', 'root', '', [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
             ]);
@@ -73,6 +73,7 @@ require_once 'header.php';
             // Gestione degli errori
             echo "Errore durante l'inserimento: " . $e->getMessage();
         }
+        // header('location: ConfirmPage.html');
     }
 
     ?>

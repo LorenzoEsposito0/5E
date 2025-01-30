@@ -55,22 +55,23 @@ form
 }
 
 .upP1 {
+    margin-left: 250px;
+
+    border: none; /* Rimuove il bordo condiviso */
+    padding: 5px;
     display: flex;
-    gap: 100px; /* Distanza aumentata tra le immagini */
-    padding: 10px;
-    width: 400px; /* Occupa tutta la larghezza */
+    gap: 200px; /* Distanza tra le immagini */
+    font-family: Arial, sans-serif;
+    width: 400px;
     height: auto;
-    margin: auto; /* Centra il contenitore */
 }
 
 .upP1 img {
-    width: 400px; /* Larghezza delle immagini */
-    height: auto; /* Mantiene le proporzioni */
-    border: 2px solid black; /* Bordo per ogni immagine */
-    padding: 5px; /* Spazio interno tra immagine e bordo */
+    border: 2px solid black; /* Ogni immagine ha il proprio bordo */
+    padding: 5px; /* Spazio interno tra l'immagine e il bordo */
+    display: block; /* Evita margini extra di default */
+    margin-top: 50px;
 }
-
-
 
 
 .img1
@@ -88,7 +89,7 @@ form
     box-sizing: border-box; /* Include il padding nella larghezza */
     width: 100%; /* Larghezza piena */
     height: 70px;
-    position: absolute; /* Fissa il footer in fondo alla finestra */
+    position: fixed; /* Fissa il footer in fondo alla finestra */
     bottom: 0; /* Posizionamento in basso */
     left: 0; /* Allineamento a sinistra */
     z-index: 10; /* Porta il footer sopra altri elementi */
@@ -98,7 +99,7 @@ form
 .footer a {
     text-decoration: none; /* Rimuove la sottolineatura */
     color: black; /* Colore del testo */
-    margin-left: 380px; /* Spaziatura tra i link */
+    margin-left: 340px; /* Spaziatura tra i link */
 }
 
 .footer a:hover {
@@ -108,7 +109,7 @@ form
 .footer-links
 {
     display: flex;
-    gap: 50px;
+    gap: 45px;
 }
 
 .body
@@ -118,7 +119,7 @@ form
     margin-left: 40%;
     margin-right: 38%;
     border: 6px solid black;
-    margin-top: 180px;
+    margin-top: 100px;
     margin-bottom: 10px;
     border-radius: 30px;
     box-shadow: 0 0 15px darkorange ;
@@ -127,5 +128,83 @@ form
 .text2
 {
     margin-left:30px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.body2
+{
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+    margin-left: 40%;
+    margin-right: 38%;
+    border: 6px solid black;
+    margin-top: 210px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    box-shadow: 0 0 15px darkorange ;
+}
+
+.text3
+{
+    margin-left:30px;
+    margin-bottom: 20px;
+}
+
+.body3
+{
+    font-size: 38px;
+    font-family: Arial, sans-serif;
+    margin-left: 40%;
+    margin-right: 38%;
+    border: 6px solid black;
+    margin-top: 210px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    box-shadow: 0 0 15px darkorange ;
+}
+
+.text4
+{
+    margin-left:30px;
+    margin-bottom: 20px;
+}
+
+.text {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Stile per l'intestazione */
+.text h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Stile per la tabella */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table td {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Stile per l'errore (se necessario) */
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
 }
