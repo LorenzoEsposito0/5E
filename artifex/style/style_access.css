@@ -1,0 +1,185 @@
+/* Stile generale */
+body {
+    font-family: 'Playfair Display', 'Raleway', sans-serif;
+    background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: var(--text);
+}
+
+.container {
+    max-width: 600px;
+    background-color: rgba(42, 0, 253, 0.25);
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 20px auto;
+    border-top: 4px solid var(--primary);
+}
+
+/* Titoli */
+h2 {
+    color: var(--primary);
+    margin-bottom: 30px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+/* Form e input */
+.form-label {
+    color: var(--dark);
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-control {
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 14px 15px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    background-color: #f8f9fa;
+}
+
+.form-control:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(46, 134, 193, 0.2);
+    background-color: #fff;
+}
+
+select.form-control {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%231a5276' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 12px;
+    padding-right: 40px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Bottoni */
+.add-to-cart-btn, .btnhome {
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+.add-to-cart-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+}
+
+.add-to-cart-btn:hover {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(46, 134, 193, 0.4);
+}
+
+.btnhome {
+    background-color: #f5f7fa;
+    color: var(--primary);
+    border: 1px solid #e1e8ed;
+}
+
+.btnhome:hover {
+    background-color: var(--light);
+    color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Animazioni e effetti */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.7s ease-out;
+}
+
+.form-control, .add-to-cart-btn, .btnhome {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.form-control:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        margin: 15px;
+    }
+
+    .add-to-cart-btn, .btnhome {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Stile errori form */
+.form-control.is-invalid {
+    border-color: #e74c3c;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.invalid-feedback {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Stile per eventuali messaggi di successo o errore */
+.alert {
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 25px;
+    animation: fadeIn 0.5s;
+    border-left: 4px solid transparent;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #2ecc71;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #e74c3c;
+    color: #721c24;
+}
