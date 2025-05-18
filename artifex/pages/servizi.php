@@ -19,6 +19,32 @@ $query = "SELECT v.id, v.titolo, v.descrizione, v.durata_media, v.luogo,
 $stmt = $db->prepare($query);
 $stmt->execute();
 $visite = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Funzioni helper per il nuovo layout
+function getColorByLocation($location) {
+    $colors = [
+        'Roma' => '#3498db',
+        'Firenze' => '#e74c3c',
+        'Venezia' => '#9b59b6',
+        'Milano' => '#2ecc71',
+        'Napoli' => '#f1c40f',
+        'Torino' => '#1abc9c',
+        'Verona' => '#e67e22'
+    ];
+
+    return $colors[$location] ?? '#2c3e50';
+}
+
+function getInitials($title) {
+    $words = explode(' ', $title);
+    $initials = '';
+
+    foreach ($words as $word) {
+        $initials .= strtoupper(substr($word, 0, 1));
+    }
+
+    return substr($initials, 0, 3);
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,42 +54,73 @@ $visite = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artifex - Servizi Turistici</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/style1.css">
 </head>
 <body>
 <?php include '../strutture_pagina/navbar.php'; ?>
 
-<!-- Featured Tours Section -->
-<section id="tours" class="section">
+<!-- Featured Tours Section - Modified Layout -->
+<section class="section">
     <div class="section-header">
-        <h2 class="section-title">Tour Disponibili</h2>
-        <p class="section-subtitle">Esplora la nostra selezione di tour guidati progettati per offrirti un'esperienza indimenticabile</p>
+        <h2 class="section-title">Esperienze da non perdere</h2>
+        <p class="section-subtitle">Itinerari curati per scoprire il meglio di ogni destinazione</p>
     </div>
 
-    <div class="tours-grid">
+    <div class="tours-container">
         <?php foreach ($visite as $visita): ?>
-            <div class="tour-card fadeIn">
-                <div class="tour-content">
-                    <span class="tour-category"><?= htmlspecialchars($visita['luogo']) ?></span>
-                    <h3 class="tour-title"><?= htmlspecialchars($visita['titolo']) ?></h3>
-                    <div class="tour-info">
-                        <span><i class="fas fa-clock"></i> <?= $visita['durata_media'] ?> minuti</span>
-                        <span><i class="fas fa-calendar"></i> <?= $visita['num_eventi'] ?> eventi</span>
+            <div class="tour-card-horizontal">
+                <div class="tour-image">
+                    <!-- Immagine di sfondo dinamica basata sul luogo -->
+                    <div class="image-placeholder" style="background-color: <?php echo getColorByLocation($visita['luogo']); ?>;">
+                        <span><?php echo getInitials($visita['titolo']); ?></span>
                     </div>
-                    <p class="tour-description">
-                        <?= htmlspecialchars(substr($visita['descrizione'], 0, 120)) ?>...
-                    </p>
+                </div>
+                <div class="tour-details">
+                    <div class="tour-header">
+                        <span class="tour-location"><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($visita['luogo']); ?></span>
+                        <h3 class="tour-title"><?php echo htmlspecialchars($visita['titolo']); ?></h3>
+                    </div>
+
+                    <div class="tour-meta">
+                        <div class="meta-item">
+                            <i class="far fa-clock"></i>
+                            <span><?php echo round($visita['durata_media']/60, 1); ?> ore</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>Fino a 20 persone</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span><?php echo $visita['num_eventi']; ?> date disponibili</span>
+                        </div>
+                    </div>
+
+                    <p class="tour-excerpt"><?php echo htmlspecialchars(substr($visita['descrizione'], 0, 120)) . '...'; ?></p>
+
                     <div class="tour-footer">
-                        <?php if ($visita['num_eventi'] > 0): ?>
-                            <span class="tour-price"><?= number_format($visita['prezzo_min'], 2) ?> €</span>
-                        <?php else: ?>
-                            <span class="tour-price">Nessun evento programmato</span>
-                        <?php endif; ?>
-                        <a href="eventi.php?id=<?= $visita['id'] ?>" class="btn btn-primary">Dettagli</a>
+                        <div class="tour-price">
+                            <?php if ($visita['num_eventi'] > 0): ?>
+                                <span class="price">€<?php echo number_format($visita['prezzo_min'], 2); ?></span>
+                                <span class="per-person">a persona</span>
+                            <?php else: ?>
+                                <span class="price">Nessun evento</span>
+                            <?php endif; ?>
+                        </div>
+                        <a href="eventi.php?id=<?php echo $visita['id']; ?>" class="btn btn-book">
+                            <?php echo ($visita['num_eventi'] > 0) ? 'Prenota ora' : 'Scopri di più'; ?>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="servizi.php" class="btn btn-view-all">
+            Scopri tutti i tour <i class="fas fa-chevron-down"></i>
+        </a>
     </div>
 </section>
 

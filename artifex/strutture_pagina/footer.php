@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../style/footer.css">
+<link rel="stylesheet" href="../style/footer1.css">
 <!-- Per le icone di pagamento -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -22,14 +22,6 @@
                         <li><a href="../pages/servizi.php">Tour</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-links-column">
-                    <h4>Informazioni</h4>
-                    <ul class="footer-menu">
-                        <li><a href="#">Chi Siamo</a></li>
-                        <li><a href="#">Contatti</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
 
@@ -38,11 +30,6 @@
         <div class="footer-bottom">
             <div class="copyright">
                 © 2025 ArtiFex S.R.L. - Tutti i diritti riservati
-            </div>
-            <div class="payment-methods">
-                <i class="fa-brands fa-cc-visa"></i>
-                <i class="fa-brands fa-cc-mastercard"></i>
-                <i class="fa-brands fa-cc-paypal"></i>
             </div>
         </div>
     </div>

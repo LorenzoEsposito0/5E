@@ -1,5 +1,28 @@
 <?php
+function getColorByLocation($location) {
+    $colors = [
+        'Roma' => '#3498db',
+        'Firenze' => '#e74c3c',
+        'Venezia' => '#9b59b6',
+        'Milano' => '#2ecc71',
+        'Napoli' => '#f1c40f',
+        'Torino' => '#1abc9c',
+        'Verona' => '#e67e22'
+    ];
 
+    return $colors[$location] ?? '#2c3e50';
+}
+
+function getInitials($title) {
+    $words = explode(' ', $title);
+    $initials = '';
+
+    foreach ($words as $word) {
+        $initials .= strtoupper(substr($word, 0, 1));
+    }
+
+    return substr($initials, 0, 3);
+}
 $content = 'ArtiFex';
 require_once '../strutture_pagina/functions_active_navbar.php';
 require '../strutture_pagina/navbar.php';
@@ -16,7 +39,7 @@ $db = DataBase_Connect::getDB($config);
 function getFeaturedTours($db) {
     $sql = "SELECT v.id, v.titolo, v.descrizione, v.durata_media, v.luogo 
             FROM visite v 
-            LIMIT 6";
+            LIMIT 7";
 
     $stmt = $db->prepare($sql);
     $stmt->execute();
@@ -88,7 +111,7 @@ $featuredGuides = getFeaturedGuides($db);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Home</title>
 </head>
@@ -106,34 +129,60 @@ $featuredGuides = getFeaturedGuides($db);
 </section>
 
 <!-- Featured Tours Section -->
+<!-- Featured Tours Section - Modified Layout -->
 <section class="section">
     <div class="section-header">
-        <h2 class="section-title">I nostri tour guidati</h2>
-        <p class="section-subtitle">Scopri i nostri itinerari più popolari selezionati dai migliori esperti del settore</p>
+        <h2 class="section-title">Esperienze da non perdere</h2>
+        <p class="section-subtitle">Itinerari curati per scoprire il meglio di ogni destinazione</p>
     </div>
 
-    <div class="tours-grid">
+    <div class="tours-container">
         <?php foreach ($featuredTours as $tour): ?>
-            <div class="tour-card">
-                <div class="tour-content">
-                    <span class="tour-category"><?php echo htmlspecialchars($tour['luogo']); ?></span>
-                    <h3 class="tour-title"><?php echo htmlspecialchars($tour['titolo']); ?></h3>
-                    <div class="tour-info">
-                        <span><i class="fa-regular fa-clock"></i> <?php echo $tour['durata_media']/60; ?> ore</span>
-                        <span><i class="fa-solid fa-user-group"></i> Max 20 persone</span>
+            <div class="tour-card-horizontal">
+                <div class="tour-image">
+                    <!-- Immagine di sfondo dinamica basata sul luogo -->
+                    <div class="image-placeholder" style="background-color: <?php echo getColorByLocation($tour['luogo']); ?>;">
+                        <span><?php echo getInitials($tour['titolo']); ?></span>
                     </div>
-                    <p class="tour-description"><?php echo htmlspecialchars(substr($tour['descrizione'], 0, 150)) . '...'; ?></p>
+                </div>
+                <div class="tour-details">
+                    <div class="tour-header">
+                        <span class="tour-location"><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($tour['luogo']); ?></span>
+                        <h3 class="tour-title"><?php echo htmlspecialchars($tour['titolo']); ?></h3>
+                    </div>
+
+                    <div class="tour-meta">
+                        <div class="meta-item">
+                            <i class="far fa-clock"></i>
+                            <span><?php echo $tour['durata_media']/60; ?> ore</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>Fino a 20 persone</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>4.8/5 (120 recensioni)</span>
+                        </div>
+                    </div>
+
+                    <p class="tour-excerpt"><?php echo htmlspecialchars(substr($tour['descrizione'], 0, 120)) . '...'; ?></p>
+
                     <div class="tour-footer">
                         <?php
-                        // Get the average price for this tour
                         $stmt = $db->prepare("SELECT AVG(prezzo) as prezzo_medio FROM eventi WHERE id_visita = :id");
                         $stmt->bindParam(':id', $tour['id']);
                         $stmt->execute();
                         $avgPrice = $stmt->fetch(PDO::FETCH_ASSOC);
                         $price = $avgPrice['prezzo_medio'] ? number_format($avgPrice['prezzo_medio'], 2) : "N/A";
                         ?>
-                        <span class="tour-price">€<?php echo $price; ?> / persona</span>
-                        <a href="eventi.php?id=<?php echo $tour['id']; ?>" class="btn btn-primary">Dettagli</a>
+                        <div class="tour-price">
+                            <span class="price">€<?php echo $price; ?></span>
+                            <span class="per-person">a persona</span>
+                        </div>
+                        <a href="eventi.php?id=<?php echo $tour['id']; ?>" class="btn btn-book">
+                            Prenota ora <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -141,7 +190,9 @@ $featuredGuides = getFeaturedGuides($db);
     </div>
 
     <div class="text-center mt-3">
-        <a href="servizi.php" class="btn btn-outline">Vedi Tutte le Visite</a>
+        <a href="servizi.php" class="btn btn-view-all">
+            Scopri tutti i tour <i class="fas fa-chevron-down"></i>
+        </a>
     </div>
 </section>
 

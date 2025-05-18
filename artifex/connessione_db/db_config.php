@@ -1,6 +1,6 @@
 <?php
 return [
-    'dns' => 'mysql:host=localhost;dbname=artifex',
+    'dns' => 'mysql:host=127.0.0.1;dbname=artifex',
     'username' => 'root',
     'password' => '',
     'options' => [
